@@ -1,0 +1,31 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install Eleventy
+        run: npm install -g @11ty/eleventy
+      - name: Build site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          PersonalAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          publish-dir: _site
+          publish-branch: gh-pages
+          
+      - name: Notify main branch
+        run: echo "Build completed. Triggering deploy..."
