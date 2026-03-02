@@ -26,34 +26,32 @@ p, ul {
   font-size: 1.6rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: var(--muted);
+  color: var(--text-secondary);
 }
 
-/* Code snippet styling */
+/* Code snippet styling - Cupertino theme-inspired */
 pre, code {
   font-family: 'SFMonoRegular', 'Consolas', 'Liberation Mono', Menlo, 'Courier New', monospace;
   background: #F5F5F7;
   color: #1C1C1E;
-  padding: 1rem;
   border-radius: 12px;
+  padding: 1rem;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 2rem 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
 }
 
 code {
   background: #E5E5E7;
+  color: #1C1C1E;
   padding: 0.2rem 0.4rem;
   border-radius: 6px;
   font-size: 0.9em;
-}
-
-/* Links with code-like style */
-.links code {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .links code:hover {
   background: var(--accent);
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
