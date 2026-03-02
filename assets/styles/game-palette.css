@@ -1,0 +1,35 @@
+/* Galactic Explorer Game Palette */
+:root {
+  --primary: #29E5FF;
+  --highlight: #FF44AA;
+  --surface: #0D0D14;
+  --background: #000000;
+  --text-light: #E5E5FF;
+  --text-muted: #8080A0;
+  --divider: #1A1A22;
+  --coral-glow: #FF6644;
+  
+  /* Game Typography */
+  --font-sans: 'Orbitron', 'Inter', sans-serif;
+  --font-serif: 'New York', 'Georgia', serif;
+  
+  /* Interactive Elements */
+  --glow: 0 0 12px rgba(41, 229, 255, 0.6), 0 0 32px rgba(41, 229, 255, 0.3);
+  --transition: all 0.3s ease;
+  
+  /* Character Icons */
+  --icon-scale: 1.1;
+  --icon-hover: #FF44AA;
+  
+  /* Scroll Progress Colors */
+  --scroll-progress: linear-gradient(90deg, #29E5FF, #FF44AA);
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-light: #FFFAFF;
+    --text-muted: #707090;
+    --surface: #0D0D14;
+  }
+}

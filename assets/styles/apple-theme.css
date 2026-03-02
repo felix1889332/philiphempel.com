@@ -1,0 +1,24 @@
+/* Apple-inspired universal theme */
+:root {
+  --bg: #000; /* fallback dark */
+  --surface: #111;
+  --text: #eaeaf6;
+  --muted: #a0a0a6;
+  --primary: #0a84ff;
+  --accent: #ff2d55;
+  --card: rgba(255,255,255,0.06);
+  --shadow: 0 6px 28px rgba(0,0,0,.25);
+}
+* { box-sizing: border-box; }
+html, body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, Arial; }
+body { background: radial-gradient(circle at 20% -10%, rgba(50,50,80,.8), rgba(0,0,0,.95) 60%), #000; color: var(--text); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.header, .app-header { background: rgba(10,10,12,.9); border-bottom: 1px solid #333; }
+.app-header__links a { color: #a9d2ff; padding: 14px 18px; display:inline-block; font-weight:600; }
+.btn { background: linear-gradient(135deg, var(--primary), #1f8fff); color: white; padding: 12px 20px; border-radius: 12px; text-decoration: none; }
+.card { background: var(--card); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+
+@media (prefers-color-scheme: light){
+  body{ background: #f7f7fb; color:#111; }
+  .header{ background:#fff; }
+}

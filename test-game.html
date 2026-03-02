@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Galactic Explorer 2D</title>
+  <style>
+    body{margin:0;background:#000;color:#0ff;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh}
+    canvas{border:1px solid #555;background:#111}
+  </style>
+</head>
+<body>
+  <canvas id="c" width="640" height="360"></canvas>
+  <script>
+    const c=document.getElementById('c');
+    const ctx=c.getContext('2d');
+    let x=50,y=290,vx=2,vy=0,ground=320,g=0.5;jump=false;
+    function loop(){
+      vy+=g; y+=vy; x+=vx;
+      if(y+20>ground){ y=ground-20; vy=0; }
+      ctx.fillStyle='#0ff'; ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#0f0';ctx.fillRect(x,y,20,20);
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galactic Explorer 2D</title>
+  
+  <!-- Favicon & Icon References -->
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='0.9em'>🚀</text></svg>">
+  <link rel="apple-touch-icon" href="assets/media/icon-touch-180x180.png">
+  <link rel="icon" type="image/png" href="assets/media/icon-192x192.png">
+  
+  <!-- Game-style CSS integration -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(#000000, #00001A);
+      color: #E5E5F7;
+      font-family: Orbitron, Inter, sans-serif;
+    }
+    canvas {
+      display: block;
+      background: radial-gradient(circle at center, #000033, #000000);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 600px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 0 48px rgba(0,122,255,0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(40px);
+    }
+    h1 {
+      text-align: center;
+      margin: 32px auto;
+      font-size: 24px;
+      letter-spacing: -0.2px;
+    }
+    p.instructions {
+      margin: 0 auto 64px auto;
+      text-align: center;
+      font-size: 14px;
+      color: #AFAFAF;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body class="dark">
+  <h1>Galactic Explorer 2D</h1>
+  <p class="instructions">Move: A / D / ← / → | Jump: Space / ↑</p>
+  
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <!-- Game engine script -->
+  <script src="assets/scripts/2d-game.js"></script>
+</body>
+</html>

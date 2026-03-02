@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galactic Explorer - Game</title>
+  <link rel="stylesheet" href="assets/styles/apple-palette.css">
+  <link rel="stylesheet" href="assets/styles/game-palette.css">
+  <style>
+    body { margin:0; background:#000; color:#fff; font-family: Inter, system-ui, sans-serif; }
+    header{ position: sticky; top:0; z-index:10; background:#111; padding:12px 16px; border-bottom:1px solid #333; }
+    header nav a{ color:#9ecaff; margin-right:14px; text-decoration:none; font-weight:600; }
+    .container{ max-width:1000px; margin:0 auto; padding:16px; }
+    canvas{ display:block; margin:20px auto; background:#000; border:1px solid #333; border-radius:12px; }
+    .panel{ text-align:center; color:#aaa; font-size:14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <strong>Galactic Explorer</strong>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="characters.html">Characters</a>
+        <a href="world.html">World</a>
+        <a href="quests.html">Missions</a>
+        <a href="game-2d.html">2D Demo</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container" style="text-align:center;">
+    <h1 style="font-size:28px; margin-top:8px;">Play Galactic Explorer (2D)</h1>
+    <canvas id="gameCanvas" width="760" height="420"></canvas>
+    <div class="panel">Controls: A/Left, D/Right, Space/Up to jump</div>
+  </main>
+  <script src="assets/scripts/2d-game.js"></script>
+</body>
+</html>
