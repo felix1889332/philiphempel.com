@@ -1,0 +1,206 @@
+/* theme.css */
+
+/* Apple-inspired design elements */
+.hero {
+  background: var(--surface);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 3rem;
+  background: var(--background);
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+}
+
+.section {
+  background: var(--surface);
+  padding: 6rem 2rem;
+  margin-bottom: 1px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card design - Apple style elements */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Apple-style horizontal scroll sections */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 2rem 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-card {
+  flex: 0 0 auto;
+  width: 300px;
+  min-width: 300px;
+  margin-right: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.horizontal-card:hover {
+  transform: translateY(-4px);
+}
+
+.horizontal-card:last-child {
+  margin-right: 0;
+}
+
+/* Code snippet styling - Cupertino-inspired */
+pre, code {
+  font-family: 'SFMonoRegular', 'Consolas', 'Liberation Mono', Menlo, 'Courier New', monospace;
+  background: #F5F5F7;
+  color: #1C1C1E;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+code {
+  background: #E5E5E7;
+  color: #1C1C1E;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.links code:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Apple-influenced design elements */
+.links {
+  margin-bottom: 4rem;
+}
+
+.links h3 {
+  margin-bottom: 1.2rem;
+}
+
+.icons {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-right: 1rem;
+  position: relative;
+  top: 6px;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+
+.icons.git {
+  background: white;
+  border-color: #D1D1D6;
+}
+
+.icons.git::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background: #1C1C1E;
+  border: 2px solid white;
+  box-shadow: 0 4px 0 0 white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: #2D2D2D;
+  box-shadow: none;
+}
+
+.icons.git::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #2D2D2D;
+}
+
+/* Responsive container for cards and media */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icons.git::before {
+    background: #C9C9CB;
+    box-shadow: 0 4px 0 0 #C9C9CB;
+  }
+  
+  .icons.git::after {
+    background: #C9C9CB;
+  }
+}

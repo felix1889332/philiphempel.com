@@ -1,0 +1,20 @@
+{
+  "name": "philiphempel.com",
+  "version": "1.0.0",
+  "description": "Modern website for philiphempel.com",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html 404.html sitemap.xml CNAME dist/ && cp -r assets dist/",
+    "start": "parcel serve index.html --port 8080",
+    "build:cms": "netlify-cms-proxy-cached && npx netlify-cms-dist build"
+  },
+  "keywords": [
+    "website",
+    "portfolio"
+  ],
+  "author": "Philipp Hempel",
+  "license": "MIT",
+  "devDependencies": {
+    "@netlify cms": "^2.4.0",
+    "parcel": "^2.10.1"
+  }
+}

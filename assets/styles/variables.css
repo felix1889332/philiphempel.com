@@ -1,0 +1,15 @@
+/* variables.css */
+:root {
+  --primary: #000000;
+  --secondary: #141414;
+  --accent: #007AFF;
+  --background: #F5F5F7;
+  --surface: #FFFFFF;
+  --text: #1C1C1E;
+  --muted: #86868B;
+  --border: #E5E5EA;
+
+  --radius: 16px;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s ease;
+}

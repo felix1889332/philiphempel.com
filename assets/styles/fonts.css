@@ -1,0 +1,59 @@
+/* fonts.css */
+@import url('https://fonts.googleapis.com/css2?family=SFMono+Regular&family=Inter:wght@400;500;600;700&family=New+York&display=swap');
+
+/* Reset font styles */
+html {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: 'New York', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 1.6rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+p, ul {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+/* Code snippet styling */
+pre, code {
+  font-family: 'SFMonoRegular', 'Consolas', 'Liberation Mono', Menlo, 'Courier New', monospace;
+  background: #F5F5F7;
+  color: #1C1C1E;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+code {
+  background: #E5E5E7;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* Links with code-like style */
+.links code {
+  transition: all 0.3s ease;
+}
+
+.links code:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}

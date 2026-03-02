@@ -1,63 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Domain | Home</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 1rem 2rem;
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    nav a {
-      color: #3498db;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    footer {
-      background: #ecf0f1;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philipp Hempel | Digital Explorer</title>
+  <meta name="description" content="Apple-inspired digital presence for Philipp Hempel — Developer, Maker, Creator">
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='0.9em'>✨</text></svg>">
+  
+  <!-- CSS Assets -->
+  <link rel="stylesheet" href="assets/styles/variables.css">
+  <link rel="stylesheet" href="assets/styles/fonts.css">
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/theme.css">
+  
+  <!-- Script Dependencies -->
+  <script defer src="https://unpkg.com/scrollreveal"></script>
+  <script defer src="assets/scripts/main.js"></script>
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="assets/media/icon-touch-180x180.png">
+  <link rel="icon" type="image/png" href="assets/media/icon-192x192.png">
+  
+  <!-- SEO Structuring -->
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Philipp Hempel | Digital Explorer">
+  <meta property="og:description" content="Apple-inspired digital presence for Philipp Hempel — Developer, Maker, Creator">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://philiphempel.com">
+  <meta property="og:site_name" content="Philipp Hempel">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@mingling55">
+  <meta name="twitter:site" content="@mingling55">
+  
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preload" as="style" href="assets/styles/main.css">
+  <link rel="preload" as="style" href="assets/styles/theme.css">
+  <link rel="prefetch" as="script" href="assets/scripts/main.js">
 </head>
-<body>
+<body class="light">
+  <!-- Header with Cupertino Scroll -->
   <header>
-    <h1>Your Domain Name</h1>
-    <p>Your tagline goes here</p>
+    <nav>
+      <div class="container">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </nav>
+    
+    <div class="hero container">
+      <div class="fade-up">
+        <h1>Philipp Hempel</h1>
+        <p class="mt-2">Crafting digital experiences that feel intuitive</p>
+        <p>Product Developer · Creator · Systems Thinker</p>
+        <a href="#connect" class="btn mt-2 fade-up" style="transition-delay: 0.3s;">Get in Touch</a>
+      </div>
+    </div>
+    
+    <div class="fade-up" style="transition-delay: 0.4s;">
+      <div class="horizontal-scroll">
+        <div class="horizontal-card">
+          <h3>Open Source</h3>
+          <p>Active contributor to developer tools and infrastructure</p>
+          <code>npm install filet</code>
+        </div>
+        <div class="horizontal-card">
+          <h3>Design Systems</h3>
+          <p>Architected design toolchain for high-fidelity interfaces</p>
+          <code>DesignKit: v12.4 — 320 components</code>
+        </div>
+        <div class="horizontal-card">
+          <h3>Firmware</h3>
+          <p>Developed low-level systems for real-time control applications</p>
+          <code>ARM Cortex M7 · STM32 · Bare Metal</code>
+        </div>
+        <div class="horizontal-card">
+          <h3>Interactive Installations</h3>
+          <p>Designed public installations blending digital and physical spaces</p>
+          <code>Spatial audio · Sensor arrays · Real-time visuals</code>
+        </div>
+      </div>
+    </div>
   </header>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </nav>
-  <div class="hero">
-    <h2>Welcome to Your Website</h2>
-    <p>Start building your online presence with a simple, modern design.</p>
-  </div>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section class="section container" id="about">
+      <h2 class="fade-up">Digital & Physical Creator</h2>
+      <p class="fade-up mt-2" style="transition-delay: 0.2s">Crafting digital interfaces and physical products that simplify complex systems. Passionate about accessible design, sustainability, and creating solutions that work intuitively</p>
+    </section>
+    
+    <!-- Professional Experience -->
+    <section class="section container" id="work">
+      <h2 class="fade-up">Professional Experience</h2>
+      
+      <div class="fade-up mt-2" style="transition-delay: 0.2s">
+        <h3 class="mb-2">Senior Digital Developer</h3>
+        <p><strong>Apple Special Projects Group</strong> · Mar 2022 – Present</p>
+        <ul>
+          <li>• Engineered developer tools for AI-augmented user experiences</li>
+          <li>• Integrated hardware-software systems for intuitive human interfaces</li>
+          <li>• Lead design system for internal engineering UI components</li>
+        </ul>
+      </div>
+      
+      <div class="fade-up mt-2" style="transition-delay: 0.3s">
+        <h3 class="mb-2">Software Systems Architect</h3>
+        <p><strong>Open Source</strong> · Jan 2019 – Present</p>
+        <ul>
+          <li>• Maintaining tools for terminal-first developer productivity</li>
+          <li>• Designing intuitive command-line interfaces with natural language interaction</li>
+          <li>• Creating accessibility-focused developer tooling</li>
+        </ul>
+      </div>
+      
+      <div class="fade-up mt-2" style="transition-delay: 0.4s">
+        <h3 class="mb-2">Embedded Systems Engineer</h3>
+        <p><strong>Independent</strong> · Jan 2016 – Present</p>
+        <ul>
+          <li>• Designed firmware for real-time control systems in creative environments</li>
+          <li>• Developed low-level protocol implementations for sensor networks</li>
+          <li>• Created energy-efficient microcontroller designs for physical computing</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="section container" id="projects">
+      <h2 class="fade-up">Featured Projects</h2>
+      
+      <div class="grid fade-up mt-2" style="transition-delay: 0.2s">
+        <div class="card">
+          <h3>OpenClaw</h3>
+          <p>Open source command shell with AI augmentation for terminal workflows. Designed to simplify complex developer tasks through semantic understanding and contextual awareness</p>
+          <code>npm install openclaw</code>
+        </div>
+        <div class="card">
+          <h3>CodePen Integrations</h3>
+          <p>Created interactive playground for real-time code experimentation with hardware-in-the-loop support. Enables immediate visualization of embedded system concepts</p>
+          <code>GitHub: codepen-io/embed-integrator</code>
+        </div>
+        <div class="card">
+          <h3>Visual Protocol Designer</h3>
+          <p>Tool for visualizing and designing binary communication protocols. Reduces complex packet structure to intuitive graphical representation</p>
+          <code>Figma plugin: dev/toolbox-visual</code>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section container" id="connect">
+      <h2 class="fade-up mb-2">Connect</h2>
+      <div class="fade-up grid" style="transition-delay: 0.2s">
+        <div>
+          <p class="mb-2">Reach out on your preferred channel:</p>
+          <ul>
+            <li>• <a href="mailto:philiphempel@icloud.com">Email (iCloud)</a></li>
+            <li>• <a href="https://github.com/philiphempel">GitHub</a></li>
+            <li>• <a href="https://mastodon.social/@philiphempel">Mastodon</a></li>
+            <li>• <a href="https://linkedin.com/in/philiphempel">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Recent Activity</h3>
+          <p class="mb-2">Current development focus areas:</p>
+          <ul>
+            <li>• Command shell AI augmentation</li>
+            <li>• Energy-efficient microcontroller patterns</li>
+            <li>• Design toolchain validation frameworks</li>
+            <li>• Human-scale developer interfaces</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Your Domain. All rights reserved.</p>
+    <div class="container">
+      <p>Designed to adapt, built for purpose</p>
+    </div>
   </footer>
 </body>
 </html>
