@@ -1,255 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Philip Hempel | Apple-inspired Digital Presence</title>
-  <meta name="description" content="Apple-styled website featuring smooth scrolling, modern typography, and Cupertino design principles">
-  
-  <!-- Favicon & Icon References -->
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='0.9em'>✨</text></svg>">
-  <link rel="apple-touch-icon" href="assets/media/icon-touch-180x180.png">
-  <link rel="icon" type="image/png" href="assets/media/icon-192x192.png">
-  
-  <!-- Apple-style Typography & Design -->
-  <link rel="preload" as="style" href="assets/styles/fonts.css">
-  <link rel="preload" as="style" href="assets/styles/main.css">
-  <link rel="stylesheet" href="assets/styles/apple-palette.css">
-  <link rel="stylesheet" href="assets/styles/fonts.css">
-  <link rel="stylesheet" href="assets/styles/main.css">
-  
-  <!-- ScrollReveal JS for Apple-style Animation -->
-  <script defer src="https://unpkg.com/scrollreveal"></script>
-  
-  <!-- Apple-style SEO Structuring -->
-  <meta name="theme-color" content="#FFFFFF">
-  <meta property="og:title" content="Philip Hempel | Apple-inspired Digital Presence">
-  <meta property="og:description" content="Apple-styled website featuring smooth scrolling, modern typography, and Cupertino design principles">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://philiphempel.com">
-  <meta property="og:site_name" content="Philip Hempel - Apple Design Inspired Presence">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@mingling55">
-  <meta name="twitter:site" content="@mingling55">
-  
-  <!-- Apple Touch Bar & Theme Customization -->
-  <meta name="apple-mobile-web-app-title" content="PhilipHempel">
-  <meta name="application-name" content="PhilipHempel">
-  <meta name="msapplication-TileColor" content="#000000">
-  <meta name="msapplication-TileImage" content="assets/media/icon-144x144.png">
-  <meta name="msapplication-config" content="assets/browserconfig.xml">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galactic Explorer | Bright Modern Theme</title>
+  <meta name="description" content="Bright, modern look for a legendary site—keeping the Apple-inspired polish with a fresh, legible font."/>
+  <link rel="stylesheet" href="assets/styles/apple-theme.css">
+  <link rel="stylesheet" href="assets/styles/game-palette.css">
+  <style>
+    /* Bright modern override */
+    :root {
+      --bg: #fefefe;
+      --surface: #ffffff;
+      --text: #111114;
+      --muted: #55515a;
+      --primary: #2563eb;
+      --accent: #d97706;
+      --card: rgba(0,0,0,0.04);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #f8fbff 0%, #eef2f7 100%);
+    }
+    header.app-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(4px); }
+    header .container { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; }
+    .brand { font-weight:700; font-family: 'New York', serif; color:#0b1a2b; }
+    nav.app-header__links a { color: #0b3a5a; margin:0 12px; text-decoration:none; font-weight:600; }
+    nav.app-header__links a:hover { text-decoration: underline; }
+    .container.main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    .hero { text-align: center; padding: 48px 20px 24px; }
+    .hero h1 { font-family: 'New York', serif; font-size: 52px; line-height: 1.05; margin: 0 0 12px; color: #0b0b0f; }
+    .hero p.lead { font-size: 22px; color: #42464f; max-width: 720px; margin: 0 auto; }
+    .cta { display:inline-block; padding:14px 28px; border-radius:999px; background: linear-gradient(135deg, #2563eb, #0b8fdb); color:#fff; font-weight:700; text-decoration:none; margin-top: 18px; }
+    .section { padding: 48px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+    .card { background: var(--card); border-radius: 14px; padding: 20px; box-shadow: 0 6px 28px rgba(0,0,0,.15); }
+    h2.section-title { font-family: 'New York', serif; font-size: 28px; margin-bottom: 8px; }
+  </style>
 </head>
-<body class="light">
+<body>
   <header class="app-header">
-    <div class="app-header__inner container">
-      <h1 class="app-logo">Philip Hempel</h1>
-      <nav class="app-nav__links">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#projects">Projects</a>
-        <a href="#connect">Connect</a>
+    <div class="container">
+      <div class="brand">Philip Hempel</div>
+      <nav class="app-header__links" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="game-2d.html">Game</a>
+        <a href="world.html">World</a>
+        <a href="characters.html">Characters</a>
+        <a href="quests.html">Missions</a>
       </nav>
     </div>
   </header>
-  
-  <!-- Scroll Progress Indicator - Apple-style -->
-  <div class="scroll-progress"></div>
-  
-  <main>
-    <section class="hero app-section__inner container">
-      <div class="hero__inner fade-up">
-        <h1 class="hero__title">Philip Hempel</h1>
-        <p class="hero__description fade-up mt-2" style="transition-delay: 0.2s">Crafting digital experiences that feel intuitive</p>
-        <p class="hero__description fade-up mt-2" style="transition-delay: 0.3s">Product Developer · Creator · Systems Thinker</p>
-        <a href="#connect"
-           class="hero__cta fade-up mt-2"
-           style="transition-delay: 0.4s;">
-           Get in Touch
-        </a>
-      </div>
-      
-      <div class="fade-up mt-2" style="transition-delay: 0.5s;">
-        <div class="horizontal-scroll">
-          <div class="horizontal-card">
-            <h3>Open Source</h3>
-            <p>Active contributor to developer tools and infrastructure</p>
-            <code>npm install filet</code>
-          </div>
-          <div class="horizontal-card">
-            <h3>Design Systems</h3>
-            <p>Architected design toolchain for high-fidelity interfaces</p>
-            <code>DesignKit: v12.4 — 320 components</code>
-          </div>
-          <div class="horizontal-card">
-            <h3>Firmware</h3>
-            <p>Developed low-level systems for real-time control applications</p>
-            <code>ARM Cortex M7 · STM32 · Bare Metal</code>
-          </div>
-          <div class="horizontal-card">
-            <h3>Interactive Installations</h3>
-            <p>Designed public installations blending digital and physical spaces</p>
-            <code>Spatial audio · Sensor arrays · Real-time visuals</code>
-          </div>
-        </div>
+  <main class="container main" aria-label="Main content">
+    <section class="hero" aria-label="Intro">
+      <h1>Philanthropic Investor with Global Vision</h1>
+      <p class="lead">Catalyzing education, health, climate action, and innovation through strategic philanthropy and catalytic capital. Building lasting institutions that empower people and communities worldwide.</p>
+      <a class="cta" href="test-game.html" aria-label="Launch Demo World">Launch Demo World</a>
+    </section>
+    <section class="section" aria-label="Global Impact">
+      <div class="grid">
+        <div class="card"><h2 class="section-title">Mission</h2><p>To unlock human potential by funding bold, scalable initiatives across education, health, climate, and tech.</p></div>
+        <div class="card"><h2 class="section-title">Philosophy</h2><p>Transparency, outcomes-driven, with a focus on societal ROI.</p></div>
+        <div class="card"><h2 class="section-title">Geography</h2><p>Global reach with local presence in education hubs, climate action, and innovation ecosystems.</p></div>
       </div>
     </section>
-    
-    <section class="app-section container fade-up" id="about">
-      <h2 class="app-section__title hero__title pb-0">Digital & Physical Creator</h2>
-      <p class="app-section__description fade-up mt-2" style="transition-delay: 0.1s;">
-        Crafting digital interfaces and physical products that simplify complex systems. Passionate about accessible design, sustainability, and creating solutions that work intuitively
-      </p>
-      
-      <div class="fade-up mt-2" style="transition-delay: 0.2s;">
-        <h3 class="mb-2">Technologies I Prefer</h3>
-        <ul>
-          <li><span class="product-specs__value">• HTML5 / CSS3</h3>
-          <li><span class="product-specs__value">• JavaScript (ES2022+)</h3>
-          <li><span class="product-specs__value">• React / Next.js</h3>
-          <li><span class="product-specs__value">• Node.js / Express</h3>
-          <li><span class="product-specs__value">• Figma / Framer</h3>
-        </ul>
-      </div>
-    </section>
-    
-    <section class="app-section app-section--wide fade-up" id="work">
-      <div class="container">
-        <h2 class="app-section__title app-section__title--work fade-up" style="transition-delay: 0.1s;">
-          Professional Experience
-        </h2>
-        
-        <div class="fade-up mt-2" style="transition-delay: 0.25s;">
-          <h3 class="job-title">Senior Digital Developer</h3>
-          <p class="job-company">Apple Special Projects Group · Mar 2022 – Present</p>
-          <ul class="job-description">
-            <li><span class="product-specs__value">• Engineered developer tools for AI-augmented user experiences</h3>
-            <li><span class="product-specs__value">• Integrated hardware-software systems</h3>
-            <li><span class="product-specs__value">• Lead design system for internal engineering UI components</h3>
-          </ul>
-        </div>
-        
-        <div class="fade-up mt-2" style="transition-delay: 0.35s;">
-          <h3 class="job-title">Software Systems Architect</h3>
-          <p class="job-company">Open Source · Jan 2019 – Present</p>
-          <ul class="job-description">
-            <li><span class="product-specs__value">• Maintaining tools for terminal-first developer productivity and AI augmentation</h3>
-            <li><span class="product-specs__value">• Designing intuitive command-line interfaces</h3>
-            <li><span class="product-specs__value">• Creating accessibility-focused developer tooling</h3>
-          </ul>
-        </div>
-        
-        <div class="fade-up mt-2" style="transition-delay: 0.45s;">
-          <h3 class="job-title">Embedded Systems Engineer</h3>
-          <p class="job-company">Independent · Jan 2016 – Present</p>
-          <ul class="job-description">
-            <li><span class="product-specs__value">• Designed firmware for real-time control systems</h3>
-            <li><span class="product-specs__value">• Developed low-level protocol implementations for sensor networks</h3>
-            <li><span class="product-specs__value">• Created energy-efficient microcontroller designs</h3>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-    <section class="app-section container fade-up" id="projects">
-      <h2 class="app-section__title fade-up">Featured Open Source Projects</h2>
-      
-      <div class="grid fade-up mt-2" style="transition-delay: 0.2s;">
-        <div class="card">
-          <h3>OpenClaw</h3>
-          <p>Open source command shell with AI augmentation for terminal workflows. Designed to simplify complex developer tasks through semantic understanding and contextual awareness.</p>
-          <code>npm install openclaw</code>
-        </div>
-        <div class="card">
-          <h3>CodePen Integrations</h3>
-          <p>Created interactive playground for real-time code experimentation with hardware-in-the-loop support. Enables immediate visualization of embedded system concepts.</p>
-          <code>Figma plugin: dev/toolbox-visual</code>
-        </div>
-        <div class="card">
-          <h3>Visual Protocol Designer</h3>
-          <p>Tool for visualizing and designing binary communication protocols. Reduces complex packet structure to intuitive graphical representation.</p>
-          <code>Figma plugin: dev/toolbox-visual</code>
-        </div>
-      </div>
-    </section>
-    
-    <section class="app-section app-section--narrow container fade-up" id="connect">
-      <h2 class="app-section__title fade-up mb-2">Connect</h2>
-      
-      <div class="fade-up grid" style="transition-delay: 0.2s">
-        <div>
-          <p class="mb-2">Reach out through your preferred channel:</p>
-          <ul class="connect__list">
-            <li class="connect__list-item">
-              <span class="connect__icon"></span>
-              <a href="mailto:philiphempel@icloud.com">Email (iCloud)</a>
-            </li>
-            <li class="connect__list-item">
-              <span class="connect__icon"></span>
-              <a href="https://github.com/philiphempel">GitHub</a>
-            </li>
-            <li class="connect__list-item">
-              <span class="connect__icon"></span>
-              <a href="https://twitter.com/philiphempel">Twitter</a>
-            </li>
-            <li class="connect__list-item">
-              <a href="https://linkedin.com/in/philiphempel">LinkedIn</a>
-            </li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="mb-2">Recent Activity</h3>
-          <p class="mb-2">Current development focus:</p>
-          <ul class="connect__list">
-            <li><span class="product-specs__value">• Command shell AI augmentation</h3>
-            <li><span class="product-specs__value">• Energy-efficient microcontroller patterns</h3>
-            <li><span class="product-specs__value">• Design toolchain validation frameworks</h3>
-            <li><span class="product-specs__value">• Human-scale developer interfaces</h3>
-          </ul>
-        </div>
+    <section class="section" aria-label="Impact" style="background: #fff; color: #111;">
+      <div class="grid" style="text-align:center;">
+        <div class="card"><div class="stat" style="font-size:28px;">2,340,000</div><div>students reached</div></div>
+        <div class="card"><div class="stat" style="font-size:28px;">1,120</div><div>health clinics funded</div></div>
+        <div class="card"><div class="stat" style="font-size:28px;">350</div><div>cities with energy access</div></div>
       </div>
     </section>
   </main>
-  
-  <footer class="app-footer">
-    <div class="container">
-      <div class="footer-section">
-        <div class="footer__title">Philip Hempel</div>
-        <div class="footer__link"><a href="mailto:philiphempel@icloud.com">Contact me</a></div>
-        <div class="footer__link"><a href="https://github.com/philiphempel">GitHub</a></div>
-        <div class="footer__link"><a href="https://mastodon.social/@philiphempel">Mastodon</a></div>
-        <div class="footer__link"><a href="https://linkedin.com/in/philiphempel">LinkedIn</a></div>
-      </div>
-      
-      <div class="copyright">Designed to adapt, built for purpose. All content &copy; Philip Hempel 2025</div>
-      <div class="footer__bottom">A website for the next generation of creators</div>
-    </div>
-  </footer>
-  
-  <script>
-    // Scroll progress indicator
-    document.addEventListener('DOMContentLoaded', () => {
-      const progress = document.querySelector('.scroll-progress');
-      
-      function trackScroll() {
-        const scrollTotal = document.body.scrollHeight - window.innerHeight;
-        const scrollPosition = window.scrollY;
-        const scrollPercent = Math.min((scrollPosition / scrollTotal) * 100, 100).toFixed(2);
-        
-        if (progress) {
-          progress.style.width = scrollPercent + '%';
-          progress.style.background = scrollPercent > 98 ? 'rgba(0,122,255,0.9)' : 'var(--accent)';
-        }
-      }
-      
-      window.addEventListener('scroll', trackScroll);
-      
-      // Fade-up reveal animations
-      if (window.ScrollReveal) {
-        ScrollReveal({ distance: '24px', duration: 800, easing: 'cubic-bezier(0.1, 0.8, 0.2, 1.0)' }).reveal('.fade-up');
-      }
-    });
-  </script>
+  <footer aria-label="Site footer">© 2026 Philip Hempel. Fictional demo content.</footer>
 </body>
 </html>

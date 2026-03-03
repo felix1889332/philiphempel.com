@@ -1,63 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galactic Explorer 2D</title>
-  
-  <!-- Favicon & Icon References -->
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='0.9em'>🚀</text></svg>">
-  <link rel="apple-touch-icon" href="assets/media/icon-touch-180x180.png">
-  <link rel="icon" type="image/png" href="assets/media/icon-192x192.png">
-  
-  <!-- Game-style CSS integration -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galactic Explorer 2D Demo</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      overflow: hidden;
-      height: 100vh;
-      background: linear-gradient(#000000, #00001A);
-      color: #E5E5F7;
-      font-family: Orbitron, Inter, sans-serif;
-    }
-    canvas {
-      display: block;
-      background: radial-gradient(circle at center, #000033, #000000);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 600px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 0 48px rgba(0,122,255,0.1);
-      border-radius: 16px;
-      backdrop-filter: blur(40px);
-    }
-    h1 {
-      text-align: center;
-      margin: 32px auto;
-      font-size: 24px;
-      letter-spacing: -0.2px;
-    }
-    p.instructions {
-      margin: 0 auto 64px auto;
-      text-align: center;
-      font-size: 14px;
-      color: #AFAFAF;
-      max-width: 400px;
-    }
+    :root{--bg:#000;--fg:#0ff;--panel:#111;--text:#9ff}
+    html,body{margin:0;height:100%;}
+    body{background:#000;color:#0ff;font-family:Inter, system-ui, sans-serif;}
+    .wrap{width:100%;max-width:820px;margin:0 auto;padding:16px;}
+    .panel{display:flex;gap:12px;justify-content:space-between;align-items:center;margin:8px 0;color:#88f}
+    canvas{border:1px solid #555;background:#111;width:100%;height:auto;border-radius:12px}
+    .hud{position:relative;display:flex;justify-content:space-between;gap:12px;margin-top:6px}
+    .badge{background:#111;border:1px solid #333;border-radius:8px;padding:6px 10px;font-size:12px;color:#9be}
   </style>
 </head>
-<body class="dark">
-  <h1>Galactic Explorer 2D</h1>
-  <p class="instructions">Move: A / D / ← / → | Jump: Space / ↑</p>
-  
-  <canvas id="gameCanvas" width="800" height="600"></canvas>
-  <!-- Game engine script -->
-  <script src="assets/scripts/2d-game.js"></script>
+<body>
+  <div class="wrap">
+    <h2 style="color:#0ff;text-align:center">Galactic Explorer 2D Demo</h2>
+    <div class="board">
+      <canvas id="c" width="640" height="360"></canvas>
+      <div class="hud" aria-label="HUD">
+        <div class="badge" id="hudInfo">Speed: 0 • Jump: ready</div>
+        <button class="badge" onclick="resetGame()">Reset</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const c=document.getElementById('c');
+    const ctx=c.getContext('2d');
+    let x=60,y=260,vx=0,vy=0,g=0.6; const w=60,h=80; let onGround=false; let startTime=Date.now();
+    function resetGame(){ x=60;y=260;vx=0;vy=0;onGround=false; }
+    function loop(){
+      vy+=g; y+=vy; x+=vx;
+      if(y+20>360){ y=360-20; vy=0; onGround=true; }
+      ctx.clearRect(0,0,c.width,c.height);
+      // ground
+      ctx.fillStyle='#033'; ctx.fillRect(0,340,640,20);
+      ctx.fillStyle="#0ff"; ctx.fillRect(x,y,w,h);
+      // hud
+      const speed = Math.abs(vx).toFixed(1);
+      document.getElementById('hudInfo').textContent = `Speed: ${speed}  Jump: ${onGround? 'ready':'in flight'}`;
+      requestAnimationFrame(loop);
+    }
+    window.addEventListener('keydown',e=>{ if(e.code==='ArrowLeft' || e.code==='KeyA') vx=-4; if(e.code==='ArrowRight' || e.code==='KeyD') vx=4; if((e.code==='Space' || e.code==='ArrowUp') && onGround){ vy=-12; onGround=false; }});
+    window.addEventListener('keyup',e=>{ if(e.code==='ArrowLeft' || e.code==='KeyA' || e.code==='ArrowRight' || e.code==='KeyD') vx=0;});
+    loop();
+  </script>
 </body>
 </html>
