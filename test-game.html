@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Galactic Explorer 2D</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test - Galactic Explorer 2D Health Check</title>
   <style>
-    body{margin:0;background:#000;color:#0ff;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh}
-    canvas{border:1px solid #555;background:#111}
+    body{margin:0;background:#111;color:#9ff;font-family:Inter, system-ui, sans-serif;}
+    .wrap{padding:16px;max-width:800px;margin:0 auto}
+    canvas{width:100%;height:auto;background:#000;border:1px solid #555;border-radius:10px}
   </style>
 </head>
 <body>
-  <canvas id="c" width="640" height="360"></canvas>
+  <div class="wrap">
+    <h2 style="color:#0ff; text-align:center;">Galactic Explorer 2D Health Check</h2>
+    <canvas id="healthCanvas" width="640" height="360"></canvas>
+  </div>
   <script>
-    const c=document.getElementById('c');
+    const c=document.getElementById('healthCanvas');
     const ctx=c.getContext('2d');
-    let x=50,y=290,vx=2,vy=0,ground=320,g=0.5;jump=false;
-    function loop(){
-      vy+=g; y+=vy; x+=vx;
-      if(y+20>ground){ y=ground-20; vy=0; }
-      ctx.fillStyle='#0ff'; ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#0f0';ctx.fillRect(x,y,20,20);
+    let x=20,y=320,vx=2,vy=0,g=0.6; function loop(){ vy+=g; y+=vy; x+=vx; if(y+20>360){ y=360-20; vy=0; }
+      ctx.clearRect(0,0,c.width,c.height); ctx.fillStyle='#0ff'; ctx.fillRect(x,y,20,20);
       requestAnimationFrame(loop);
-    }
-    loop();
+    } loop();
   </script>
 </body>
 </html>

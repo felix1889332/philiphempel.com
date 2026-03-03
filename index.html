@@ -31,7 +31,7 @@
     nav.app-header__links a { color: #0b3a5a; margin:0 12px; text-decoration:none; font-weight:600; }
     nav.app-header__links a:hover { text-decoration: underline; }
     .container.main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
-    .hero { text-align: center; padding: 48px 20px 24px; }
+    .hero { text-align: center; padding: 60px 20px 24px; }
     .hero h1 { font-family: 'New York', serif; font-size: 52px; line-height: 1.05; margin: 0 0 12px; color: #0b0b0f; }
     .hero p.lead { font-size: 22px; color: #42464f; max-width: 720px; margin: 0 auto; }
     .cta { display:inline-block; padding:14px 28px; border-radius:999px; background: linear-gradient(135deg, #2563eb, #0b8fdb); color:#fff; font-weight:700; text-decoration:none; margin-top: 18px; }
@@ -39,27 +39,34 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
     .card { background: var(--card); border-radius: 14px; padding: 20px; box-shadow: 0 6px 28px rgba(0,0,0,.15); }
     h2.section-title { font-family: 'New York', serif; font-size: 28px; margin-bottom: 8px; }
+    /* Accessibility helpers */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    /* Theme toggle widget */
+    .theme-toggle { border:1px solid #ccc; padding:6px 10px; border-radius:999px; background:white; cursor:pointer; font-weight:600; }
   </style>
 </head>
 <body>
   <header class="app-header">
     <div class="container">
-      <div class="brand">Philip Hempel</div>
+      <div class="brand" aria-label="Brand">Philip Hempel</div>
       <nav class="app-header__links" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="game-2d.html">Game</a>
         <a href="world.html">World</a>
         <a href="characters.html">Characters</a>
         <a href="quests.html">Missions</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark theme">🌗</button>
       </nav>
     </div>
   </header>
+
   <main class="container main" aria-label="Main content">
     <section class="hero" aria-label="Intro">
-      <h1>Philanthropic Investor with Global Vision</h1>
-      <p class="lead">Catalyzing education, health, climate action, and innovation through strategic philanthropy and catalytic capital. Building lasting institutions that empower people and communities worldwide.</p>
-      <a class="cta" href="test-game.html" aria-label="Launch Demo World">Launch Demo World</a>
+      <h1>Philanthropic Investor. Global Impact Architect.</h1>
+      <p class="lead">Disbursing strategic philanthropy, catalytic capital, and scalable solutions to education, health, climate action, and technology. Building lasting institutions that empower people and communities worldwide.</p>
+      <a class="cta" href="test-game.html" aria-label="Launch Play Demo World">Launch Demo World</a>
     </section>
+
     <section class="section" aria-label="Global Impact">
       <div class="grid">
         <div class="card"><h2 class="section-title">Mission</h2><p>To unlock human potential by funding bold, scalable initiatives across education, health, climate, and tech.</p></div>
@@ -67,6 +74,7 @@
         <div class="card"><h2 class="section-title">Geography</h2><p>Global reach with local presence in education hubs, climate action, and innovation ecosystems.</p></div>
       </div>
     </section>
+
     <section class="section" aria-label="Impact" style="background: #fff; color: #111;">
       <div class="grid" style="text-align:center;">
         <div class="card"><div class="stat" style="font-size:28px;">2,340,000</div><div>students reached</div></div>
@@ -74,7 +82,74 @@
         <div class="card"><div class="stat" style="font-size:28px;">350</div><div>cities with energy access</div></div>
       </div>
     </section>
+
+    <section class="section" aria-label="Portfolio & Grants">
+      <div class="grid">
+        <div class="card">
+          <h2 class="section-title">Portfolio Highlights</h2>
+          <p class="muted">Grants and investments that catalyze education tech, clean energy, and global health. Each grant is paired with measurable milestones and a 5-year impact plan.</p>
+          <ul style="margin:0 0 8px 20px; color:#0b74e6;">
+            <li>Education tech accelerator grants</li>
+            <li>R&D funding for low-cost medical devices</li>
+            <li>Solar micro-grids for rural communities</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Partnerships</h2>
+          <p class="muted">Collaborations with academic, nonprofit, and industry leaders to maximize reach and effectiveness.</p>
+          <ul style="margin:0 0 8px 20px; color:#0b74e6;">
+            <li>Global Education Foundation</li>
+            <li>Health Access Alliance</li>
+            <li>Climate Action Consortium</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Media & Awards</h2>
+          <p class="muted">Notable recognitions (fictional for demo): Global Good Award 2025, Philanthropy Innovation Citation 2026.</p>
+          <p class="muted">Press: “A force multiplier for good”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Get Involved">
+      <div class="grid">
+        <div class="card" aria-label="Volunteer opportunities">
+          <h2 class="section-title">Get Involved</h2>
+          <p class="muted">Volunteer grants, research partnerships, and community-led initiatives welcome collaborations from universities, NGOs, and impact-driven startups.</p>
+        </div>
+        <div class="card" aria-label="Contact methods">
+          <h2 class="section-title">Contact</h2>
+          <p class="muted">Email: philanthropist@example.org — Social: @philanthropic-vision</p>
+          <p class="muted">Office: Global HQ, Amsterdam | New York | Nairobi</p>
+        </div>
+        <div class="card" aria-label="Newsletter">
+          <h2 class="section-title">Newsletter</h2>
+          <p class="muted">Monthly insights into grantmaking, impact reports, and invites to exclusive briefings.</p>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer aria-label="Site footer">© 2026 Philip Hempel. Fictional demo content.</footer>
+
+  <footer aria-label="Site footer">
+    <div class="container" style="opacity:.8">
+      © 2026 Philip Hempel. All content is fictional for demonstration.
+    </div>
+  </footer>
+  <script>
+    // Theme toggle persistence
+    (function(){
+      const toggle = document.getElementById('themeToggle');
+      function setTheme(mode){
+        if(mode==='light') document.body.style.background='white'; else document.body.style.background='linear-gradient(135deg, #f8fbff 0%, #eef2f7 100%)';
+        localStorage.setItem('theme',''+mode);
+      }
+      const saved = localStorage.getItem('theme');
+      if(saved){ setTheme(saved); }
+      if(toggle){
+        toggle.addEventListener('click',()=>{ const m = localStorage.getItem('theme')==='light'?'dark':'light'; setTheme(m); localStorage.setItem('theme', m); toggle.textContent = m==='light'?'🌞':'🌜'; });
+        toggle.textContent = saved==='light'?'🌞':'🌜';
+      }
+    })();
+  </script>
 </body>
 </html>
