@@ -1,0 +1,10 @@
+{
+  "patch_name": "Patch F: Mobile Controls & In-Game Hints",
+  "description": "Introduced an optional on-screen control overlay for mobile users to play the 2D game without a keyboard. Added an in-game hint overlay for new players.",
+  "files_changed": [
+    "/tmp/philiphempel.com/game-2d.html",
+    "/tmp/philiphempel.com/mobile-controls.css"
+  ],
+  "test_plan": "Access game-2d.html on a mobile device or via browser developer tools' mobile emulation. Verify the on-screen controls appear and are interactive (tap left/right moves the player, tap jump jumps). Verify the keyboard controls continue to function on desktop.",
+  "results": "Pending test execution."
+}

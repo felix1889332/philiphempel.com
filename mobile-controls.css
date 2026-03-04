@@ -1,0 +1,7 @@
+/* Simple on-screen controls for mobile play */
+#joystick, #buttons { display: none; }
+@media (max-width: 700px) {
+  #joystick, #buttons { display: block; }
+  .btn, .badge { font-size: 14px; padding: 12px; }
+  canvas { width: 100% !important; height: auto !important; }
+}

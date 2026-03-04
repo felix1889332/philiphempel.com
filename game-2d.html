@@ -8,44 +8,201 @@
     :root{--bg:#000;--fg:#0ff;--panel:#111;--text:#9ff}
     html,body{margin:0;height:100%;}
     body{background:#000;color:#0ff;font-family:Inter, system-ui, sans-serif;}
-    .wrap{width:100%;max-width:820px;margin:0 auto;padding:16px;box-sizing:border-box;}
+    .wrap{width:100%;max-width:920px;margin:0 auto;padding:16px;box-sizing:border-box;}
     .panel{display:flex;gap:12px;justify-content:space-between;align-items:center;margin:8px 0;color:#88f}
-    canvas{border:1px solid #555;background:#111;width:100%;height:auto;border-radius:12px;}
-    .hud{position:relative;display:flex;justify-content:space-between;gap:12px;margin-top:6px}
-    .badge{background:#111;border:1px solid #333;border-radius:8px;padding:6px 10px;font-size:12px;color:#9be}
+    .game-area{width:100%;display:flex;flex-direction:column;align-items:center;position:relative}
+    .canvas-wrapper{width:100%;max-width:800px;position:relative}
+    canvas{border:1px solid #555;background:#111;width:100%;height:auto;border-radius:12px; touch-action: none;}
+    .hud{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:8px;width:100%; padding:0 4px;}
+    .badge{background:#111;border:1px solid #333;border-radius:8px;padding:6px 10px;font-size:12px;color:#9be; cursor:pointer;}
+    .controls{font-family:monospace; opacity:.8; font-size:12px;}
+    
+    /* Mobile Controls */
+    .mobile-controls {
+      display: none;
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding: 0 10px;
+      user-select: none;
+    }
+    .d-pad, .action-pad { display: flex; gap: 10px; }
+    .m-btn {
+      background: rgba(40,40,40,0.8);
+      border: 1px solid #555;
+      color: #0ff;
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .m-btn:active { background: #0ff; color: #000; }
+    
+    /* Tutorial Overlay */
+    #tutorialOverlay {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 25px;
+      border-radius: 8px;
+      border: 1px solid #0ff;
+      text-align: center;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    /* Light mode override */
+    body.light { background:#f0f4f8; color:#111; }
+    body.light .wrap .panel { color:#333; }
+    body.light canvas { border:1px solid #ccc; background:#fff; }
+    body.light .badge { background:#fff; border:1px solid #ccc; color:#333; }
+    body.light .m-btn { background: #e0e0e0; color: #333; border-color: #aaa; }
+    body.light #tutorialOverlay { background: rgba(255, 255, 255, 0.9); border-color: #333; color: #111; }
+
+    @media (max-width: 768px) {
+      .mobile-controls { display: flex; }
+      .controls { display: none; } /* Hide keyboard hint on small screens */
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h2 style="color:#0ff; text-align:center;">Galactic Explorer 2D Demo</h2>
-    <div class="board">
-      <canvas id="c" width="640" height="360"></canvas>
+    <h2 style="color:inherit; text-align:center;">Galactic Explorer 2D Demo</h2>
+    <div class="panel" aria-label="Panel">
+      <div class="controls">Controls: A/Left, D/Right, Space/Up to jump</div>
       <div class="hud" aria-label="HUD">
-        <div class="badge" id="hudInfo">Speed: 0 • Jump: ready</div>
-        <button class="badge" onclick="resetGame()">Reset</button>
+        <div class="badge" id="hudInfo">Spd: 0 | Jump: rdy | FPS: 0</div>
+        <div>
+          <button class="badge" id="resetBtn">Reset</button>
+          <button class="badge" id="themeBtn">🌗</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="game-area canvas-wrapper" aria-label="Game canvas container">
+      <canvas id="c" width="640" height="360"></canvas>
+      <div id="tutorialOverlay">
+        <h3>Mission Start!</h3>
+        <p>Explore the zone.</p>
+        <small>(Move to begin)</small>
+      </div>
+    </div>
+
+    <!-- Mobile On-Screen Controls -->
+    <div class="mobile-controls" aria-label="Mobile Game Controls">
+      <div class="d-pad">
+        <div class="m-btn" id="btnLeft">←</div>
+        <div class="m-btn" id="btnRight">→</div>
+      </div>
+      <div class="action-pad">
+        <div class="m-btn" id="btnJump">↑</div>
       </div>
     </div>
   </div>
+
   <script>
     const c=document.getElementById('c');
     const ctx=c.getContext('2d');
-    let x=60,y=260,vx=0,vy=0,g=0.6; const w=60,h=80; let onGround=false; let startTime=Date.now();
-    function resetGame(){ x=60;y=260;vx=0;vy=0;onGround=false; }
-    function loop(){
+    let x=60,y=260,vx=0,vy=0,g=0.6; const w=60,h=80; let onGround=false; 
+    let lastTime = performance.now();
+    let frameCount = 0;
+    let fps = 0;
+    let hasMoved = false;
+
+    function resetGame(){ 
+      x=60;y=260;vx=0;vy=0;onGround=false; 
+      hasMoved = false;
+      document.getElementById('tutorialOverlay').style.opacity = '1';
+    }
+    
+    function loop(currentTime){
+      // Calculate FPS
+      const deltaTime = currentTime - lastTime;
+      if (deltaTime >= 1000) {
+        fps = frameCount;
+        frameCount = 0;
+        lastTime = currentTime;
+      }
+      frameCount++;
+
       vy+=g; y+=vy; x+=vx;
       if(y+20>360){ y=360-20; vy=0; onGround=true; }
+      
+      // Boundaries
+      if (x < 0) { x = 0; vx = 0; }
+      if (x > 640 - w) { x = 640 - w; vx = 0; }
+
       ctx.clearRect(0,0,c.width,c.height);
       // ground
-      ctx.fillStyle='#033'; ctx.fillRect(0,340,640,20);
-      ctx.fillStyle="#0ff"; ctx.fillRect(x,y,w,h);
-      // hud
+      ctx.fillStyle=document.body.classList.contains('light') ? '#ddd' : '#033'; 
+      ctx.fillRect(0,340,640,20);
+      
+      // player
+      ctx.fillStyle=document.body.classList.contains('light') ? '#0a84ff' : '#0ff'; 
+      ctx.fillRect(x,y,w,h);
+      
       const speed = Math.abs(vx).toFixed(1);
-      document.getElementById('hudInfo').textContent = `Speed: ${speed}  Jump: ${onGround? 'ready':'in flight'}`;
+      document.getElementById('hudInfo').textContent = `Spd: ${speed} | Jump: ${onGround? 'rdy':'fly'} | FPS: ${fps}`;
+      
       requestAnimationFrame(loop);
     }
-    window.addEventListener('keydown',e=>{ if(e.code==='ArrowLeft' || e.code==='KeyA') vx=-4; if(e.code==='ArrowRight' || e.code==='KeyD') vx=4; if((e.code==='Space' || e.code==='ArrowUp') && onGround){ vy=-12; onGround=false; }});
-    window.addEventListener('keyup',e=>{ if(e.code==='ArrowLeft' || e.code==='KeyA' || e.code==='ArrowRight' || e.code==='KeyD') vx=0;});
-    loop();
+
+    function handleInput(type, val) {
+      if (!hasMoved) {
+        hasMoved = true;
+        document.getElementById('tutorialOverlay').style.opacity = '0';
+      }
+      if (type === 'h') vx = val;
+      if (type === 'v' && val === 'jump' && onGround) { vy = -12; onGround = false; }
+    }
+
+    // Keyboard
+    window.addEventListener('keydown',e=>{ 
+      if(e.code==='ArrowLeft' || e.code==='KeyA') handleInput('h', -4); 
+      if(e.code==='ArrowRight' || e.code==='KeyD') handleInput('h', 4); 
+      if(e.code==='Space' || e.code==='ArrowUp') handleInput('v', 'jump'); 
+    });
+    window.addEventListener('keyup',e=>{ 
+      if(e.code==='ArrowLeft' || e.code==='KeyA' || e.code==='ArrowRight' || e.code==='KeyD') handleInput('h', 0);
+    });
+
+    // Touch / Mouse for mobile controls
+    const btnLeft = document.getElementById('btnLeft');
+    const btnRight = document.getElementById('btnRight');
+    const btnJump = document.getElementById('btnJump');
+
+    const bindControl = (el, type, valOn, valOff) => {
+      // Touch events
+      el.addEventListener('touchstart', (e) => { e.preventDefault(); handleInput(type, valOn); });
+      el.addEventListener('touchend', (e) => { e.preventDefault(); if(valOff !== null) handleInput(type, valOff); });
+      
+      // Mouse events for testing on desktop
+      el.addEventListener('mousedown', () => { handleInput(type, valOn); });
+      el.addEventListener('mouseup', () => { if(valOff !== null) handleInput(type, valOff); });
+      el.addEventListener('mouseleave', () => { if(valOff !== null) handleInput(type, valOff); });
+    };
+
+    bindControl(btnLeft, 'h', -4, 0);
+    bindControl(btnRight, 'h', 4, 0);
+    bindControl(btnJump, 'v', 'jump', null); // Jump doesn't need an 'off' value for holding
+
+    // Wire buttons
+    document.getElementById('resetBtn').addEventListener('click', resetGame);
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      localStorage.setItem('gameTheme', document.body.classList.contains('light')?'light':'dark');
+    });
+    if(localStorage.getItem('gameTheme')==='light') document.body.classList.add('light');
+
+    requestAnimationFrame(loop);
   </script>
 </body>
 </html>
